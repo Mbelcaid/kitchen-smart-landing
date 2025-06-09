@@ -24,21 +24,14 @@ const nextConfig = {
   // Désactivation des source maps en production
   productionBrowserSourceMaps: false,
   
-  // Configuration expérimentale
+  // Configuration expérimentale simplifiée pour le déploiement
   experimental: {
-    workerThreads: true, // Active le multithreading
-    gzipSize: true, // Active la compression GZIP avancée
-    scrollRestoration: true, // Améliore la navigation arrière/avant
-    optimizeCss: true, // Optimisation CSS avancée
+    scrollRestoration: true,
     optimizePackageImports: [
       'lucide-react',
       '@radix-ui',
       'framer-motion',
     ],
-    optimizeServerReact: true,
-    optimizeCss: {
-      logLevel: 'error',
-    },
   },
   
   // Configuration Webpack personnalisée
