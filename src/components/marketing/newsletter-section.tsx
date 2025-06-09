@@ -1,14 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function NewsletterSection() {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error' | 'already'>('idle');
+  const [subscribedEmails, setSubscribedEmails] = useState<string[]>([]);
+  
+  // Charger les emails déjà inscrits depuis localStorage
+  useEffect(() => {
+    const savedEmails = localStorage.getItem('kitchenSmart_subscribedEmails');
+    if (savedEmails) {
+      setSubscribedEmails(JSON.parse(savedEmails));
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Vérifier si l'email est déjà inscrit
+    if (subscribedEmails.includes(email.toLowerCase())) {
+      setStatus('already');
+      return;
+    }
+    
     setStatus('loading');
     
     try {
@@ -26,17 +41,21 @@ export function NewsletterSection() {
       });
 
       if (response.ok) {
-        setStatus('success');
-        setMessage('Merci pour votre inscription !');
+        // Enregistrer l'email dans localStorage
+        const updatedEmails = [...subscribedEmails, email.toLowerCase()];
+        localStorage.setItem('kitchenSmart_subscribedEmails', JSON.stringify(updatedEmails));
+        setSubscribedEmails(updatedEmails);
+        
+        // Rediriger vers la page de confirmation
         setEmail('');
-        // Réinitialiser le message après 5 secondes
-        setTimeout(() => setMessage(''), 5000);
+        window.location.href = '/newsletter-confirmation';
+        return; // Important: stopper l'exécution ici
       } else {
         throw new Error('Erreur lors de l\'inscription');
       }
     } catch (_error) {
       setStatus('error');
-      setMessage('Une erreur est survenue. Veuillez réessayer plus tard.');
+      alert('Une erreur est survenue. Veuillez réessayer plus tard.');
     }
   };
 
@@ -82,9 +101,15 @@ export function NewsletterSection() {
             </div>
           </form>
           
-          {message && (
-            <div className={`mt-4 text-sm ${status === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
-              {message}
+          {status === 'error' && (
+            <div className="mt-4 text-sm text-red-600 dark:text-red-400">
+              Une erreur est survenue. Veuillez réessayer plus tard.
+            </div>
+          )}
+          
+          {status === 'already' && (
+            <div className="mt-4 text-sm text-amber-600 dark:text-amber-400">
+              Vous êtes déjà inscrit(e) à notre newsletter. Merci pour votre enthousiasme !
             </div>
           )}
           
