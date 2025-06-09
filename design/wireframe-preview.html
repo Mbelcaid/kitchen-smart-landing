@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - KitchenSmart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #f0f0f0;
+            background: #121212;
+            min-height: 100vh;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        
+        /* Variables de couleurs - Nouvelle palette */
+        :root {
+            --primary: #3a86ff;   /* Bleu vif */
+            --primary-light: #4d94ff;
+            --primary-dark: #1a75ff;
+            --secondary: #ff006e; /* Rose vif */
+            --accent: #ffbe0b;   /* Jaune vif */
+            --accent2: #fb5607;  /* Orange vif */
+            --dark: #1a1a1a;
+            --darker: #121212;
+            --light: #f0f0f0;
+            --text: #f0f0f0;
+            --text-light: #b3b3b3;
+            --card-bg: #1e1e1e;
+            --card-hover: #2a2a2a;
+            --success: #2ecc71;  /* Vert pour la section d'inscription */
+        }
+        
+        /* Grille */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .grid { display: grid; gap: 20px; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        
+        /* Espacements */
+        .section { padding: 80px 0; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .text-center { text-align: center; }
+        
+        /* Éléments de wireframe */
+        .box { 
+            background: var(--card-bg); 
+            border: 1px solid #333; 
+            padding: 20px; 
+            border-radius: 12px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .box:hover {
+            background: var(--card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .box-sm { min-height: 60px; }
+        .box-lg { min-height: 200px; }
+        .box-xl { min-height: 400px; }
+        
+        /* Header */
+        header { 
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Hero */
+        .hero { 
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+        
+        /* Témoignages */
+        .testimonial-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .hero { padding-top: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="box box-sm" style="width: 180px;">Logo</div>
+                <nav class="box box-sm" style="width: 400px;">Navigation</nav>
+                <div class="box box-sm" style="width: 150px;">Bouton CTA</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="hero" style="background: linear-gradient(135deg, #1a1a1a, #3a86ff);">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto; padding: 100px 20px 60px;">
+                <h1 style="font-size: 3.5rem; margin-bottom: 20px; color: white; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                    Dites adieu au gaspillage alimentaire
+                </h1>
+                <p class="mb-4" style="font-size: 1.25rem; color: var(--text-light); margin-bottom: 30px;">
+                    KitchenSmart révolutionne votre façon de gérer votre cuisine et vous fait économiser jusqu'à 650€ par an
+                </p>
+                <div style="display: inline-block; background: var(--primary); color: white; padding: 15px 40px; border-radius: 50px; font-weight: 600; margin: 20px 0 40px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);">
+                    Rejoindre la bêta - C'est gratuit
+                </div>
+                
+                <!-- Compteur d'utilisateurs -->
+                <div style="background: white; display: inline-block; padding: 10px 25px; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-top: 20px;">
+                    <span style="color: var(--primary); font-weight: 700; font-size: 1.2rem;">1,247</span> 
+                    <span style="color: var(--text-light);">bêta-testeurs nous ont déjà rejoints !</span>
+                </div>
+            </div>
+            
+            <!-- Image en dessous -->
+            <div class="box box-lg" style="margin: 40px auto 0; max-width: 1000px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.2rem;">
+                    📱 Capture d'écran de l'application
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Défi -->
+    <section class="section" style="background: linear-gradient(135deg, #1a1a1a, #3a0ca3); padding: 100px 0; position: relative; overflow: hidden;">
+        <!-- Éléments de décor -->
+        <div style="position: absolute; top: -50px; left: 0; width: 200px; height: 200px; background: var(--primary); opacity: 0.1; border-radius: 50%; filter: blur(60px);"></div>
+        <div style="position: absolute; bottom: -100px; right: -50px; width: 300px; height: 300px; background: var(--accent); opacity: 0.1; border-radius: 50%; filter: blur(80px);"></div>
+        
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto 70px; position: relative; z-index: 1;">
+                <span style="background: rgba(255,255,255,0.1); color: var(--primary-light); padding: 8px 25px; border-radius: 50px; font-size: 1rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1);">
+                    Notre défi
+                </span>
+                <h2 style="font-size: 3.5rem; margin-bottom: 25px; color: white; line-height: 1.2; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                    Réduire le gaspillage alimentaire,<br>un défi collectif
+                </h2>
+                <p style="color: var(--text-light); font-size: 1.25rem; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+                    Chaque année, des millions de tonnes de nourriture sont gaspillées alors que des millions de personnes souffrent de la faim. Ensemble, changeons la donne avec des solutions innovantes et accessibles à tous.
+                </p>
+            </div>
+            <div class="grid grid-3" style="position: relative; z-index: 1;">
+                <div class="box" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="font-size: 3.5rem; margin: 0 0 15px; color: var(--primary); font-weight: 700;">30 kg</h3>
+                        <p style="color: var(--text-light); font-size: 1.1rem; margin: 0;">de nourriture gaspillée par personne/an</p>
+                    </div>
+                </div>
+                <div class="box" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="font-size: 3.5rem; margin: 0 0 15px; color: #ff4757; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">650 €</h3>
+                        <p style="color: var(--text-light); font-size: 1.1rem; margin: 0;">jetés à la poubelle chaque année</p>
+                    </div>
+                </div>
+                <div class="box" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="font-size: 2.5rem; margin: 0 0 15px; color: var(--primary-light); font-weight: 700; line-height: 1.2;">10M de tonnes</h3>
+                        <p style="color: var(--text-light); font-size: 1.1rem; margin: 0;">de déchets alimentaires en France</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section Solution -->
+    <section class="section" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 100px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div style="background: #2e7d32; color: white; display: inline-block; padding: 8px 20px; border-radius: 25px; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);">Notre solution</div>
+                <h2 style="color: #1b5e20; font-size: 3rem; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.05);">Comment ça marche ?</h2>
+                <p style="color: #2e7d32; font-size: 1.3rem; max-width: 700px; margin: 0 auto; font-weight: 500;">Une solution simple en 3 étapes pour réduire votre gaspillage alimentaire</p>
+            </div>
+            <div class="grid grid-3" style="gap: 30px;">
+                <div style="background: white; border-radius: 16px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(46, 204, 113, 0.1); margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📱</div>
+                    <h3 style="color: #1a1a1a; margin-bottom: 15px; font-size: 1.4rem;">Scan intelligent</h3>
+                    <p style="color: #666; line-height: 1.6; margin: 0;">Scannez vos produits pour un suivi en temps réel et une gestion simplifiée</p>
+                </div>
+                <div style="background: white; border-radius: 16px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(46, 204, 113, 0.1); margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">⏰</div>
+                    <h3 style="color: #1a1a1a; margin-bottom: 15px; font-size: 1.4rem;">Alertes intelligentes</h3>
+                    <p style="color: #666; line-height: 1.6; margin: 0;">Soyez prévenu avant la péremption de vos produits pour éviter le gaspillage</p>
+                </div>
+                <div style="background: white; border-radius: 16px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(46, 204, 113, 0.1); margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🍳</div>
+                    <h3 style="color: #1a1a1a; margin-bottom: 15px; font-size: 1.4rem;">Recettes personnalisées</h3>
+                    <p style="color: #666; line-height: 1.6; margin: 0;">Découvrez des idées de recettes basées sur les ingrédients disponibles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Impact -->
+    <section class="section" style="background: linear-gradient(135deg, #27ae60, #2ecc71); padding: 100px 0; position: relative; overflow: hidden;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="color: white; font-size: 2.8rem; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Notre impact collectif</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 700px; margin: 0 auto; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">Ensemble, nous faisons la différence contre le gaspillage alimentaire</p>
+            </div>
+            
+            <div class="grid grid-4" style="gap: 20px; position: relative; z-index: 1;">
+                <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <div style="width: 80px; height: 80px; background: rgba(39, 174, 96, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-utensils" style="font-size: 2.2rem; color: #27ae60;"></i>
+                    </div>
+                    <div style="font-size: 2.8rem; font-weight: 700; color: #27ae60; margin-bottom: 10px; line-height: 1;">
+                        <span class="counter" data-target="1247">0</span>kg
+                    </div>
+                    <p style="color: #555; margin: 0; font-size: 1.1rem; font-weight: 500;">de nourriture sauvée</p>
+                    <div style="width: 40px; height: 3px; background: #27ae60; margin: 15px auto 0;"></div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <div style="width: 80px; height: 80px; background: rgba(58, 134, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-euro-sign" style="font-size: 2.2rem; color: #3a86ff;"></i>
+                    </div>
+                    <div style="font-size: 2.8rem; font-weight: 700; color: #3a86ff; margin-bottom: 10px; line-height: 1;">
+                        <span class="counter" data-target="5611">0</span>€
+                    </div>
+                    <p style="color: #555; margin: 0; font-size: 1.1rem; font-weight: 500;">d'économies réalisées</p>
+                    <div style="width: 40px; height: 3px; background: #3a86ff; margin: 15px auto 0;"></div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <div style="width: 80px; height: 80px; background: rgba(255, 190, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-leaf" style="font-size: 2.2rem; color: #ffbe0b;"></i>
+                    </div>
+                    <div style="font-size: 2.8rem; font-weight: 700; color: #ffbe0b; margin-bottom: 10px; line-height: 1;">
+                        <span class="counter" data-target="5611">0</span>kg
+                    </div>
+                    <p style="color: #555; margin: 0; font-size: 1.1rem; font-weight: 500;">de CO2 économisés</p>
+                    <div style="width: 40px; height: 3px; background: #ffbe0b; margin: 15px auto 0;"></div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <div style="width: 70px; height: 70px; background: rgba(255, 0, 110, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                        <i class="fas fa-utensil-spoon" style="font-size: 2rem; color: #ff006e;"></i>
+                    </div>
+                    <div style="font-size: 2.8rem; font-weight: 700; color: #ff006e; margin-bottom: 10px; line-height: 1;">
+                        <span class="counter" data-target="3747">0</span>+
+                    </div>
+                    <p style="color: #555; margin: 0; font-size: 1.1rem; font-weight: 500;">repas préservés</p>
+                    <div style="width: 40px; height: 3px; background: #ff006e; margin: 15px auto 0;"></div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 0.9rem;">
+                *Chiffres mis à jour en temps réel par nos utilisateurs
+            </p>
+            
+            <!-- Éléments décoratifs -->
+            <div style="position: absolute; top: 0; left: 0; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%); filter: blur(50px); z-index: 0;"></div>
+            <div style="position: absolute; bottom: -100px; right: -50px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 70%); filter: blur(60px); z-index: 0;"></div>
+        </div>
+        
+        <script>
+            // Animation des compteurs
+            document.addEventListener('DOMContentLoaded', function() {
+                const counters = document.querySelectorAll('.counter');
+                const speed = 200; // Plus la valeur est basse, plus c'est rapide
+                
+                const animateCounters = () => {
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const increment = target / speed;
+                        
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(animateCounters, 1);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    });
+                };
+                
+                // Lancer l'animation quand la section est visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounters();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                const impactSection = document.querySelector('section:nth-of-type(4)');
+                observer.observe(impactSection);
+            });
+        </script>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section class="section" style="background: #ffffff; padding: 100px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.8rem; color: #1a1a1a; margin-bottom: 15px;">Ils nous font confiance</h2>
+                <p style="color: #666; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Découvrez ce que nos utilisateurs pensent de KitchenSmart</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="testimonial-card" style="background: #f9f9f9; border-radius: 12px; padding: 30px; height: 100%; transition: all 0.3s ease;">
+                    <div class="box-sm" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; background: rgba(255, 0, 110, 0.1); display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 1.5rem;">👩‍🍳</div>
+                    <p class="text-center" style="color: #333; font-style: italic; margin-bottom: 20px; min-height: 80px;">« Grâce à KitchenSmart, je jette deux fois moins de nourriture ! »</p>
+                    <p class="text-center" style="font-weight: 600; color: #1a1a1a; margin: 0;">Marie, 32 ans</p>
+                    <p class="text-center" style="color: var(--primary); margin: 5px 0 0; font-size: 0.9rem;">Éco-responsable</p>
+                    <div style="display: flex; justify-content: center; margin-top: 15px; color: #ffc107;">
+                        ★★★★★
+                    </div>
+                </div>
+                <div class="testimonial-card" style="background: #f9f9f9; border-radius: 12px; padding: 30px; height: 100%; transition: all 0.3s ease;">
+                    <div class="box-sm" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; background: rgba(255, 190, 11, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.5rem;">👨‍💼</div>
+                    <p class="text-center" style="color: #333; font-style: italic; margin-bottom: 20px; min-height: 80px;">« L'application est intuitive et m'aide à organiser mes repas. »</p>
+                    <p class="text-center" style="font-weight: 600; color: #1a1a1a; margin: 0;">Thomas, 28 ans</p>
+                    <p class="text-center" style="color: var(--accent); margin: 5px 0 0; font-size: 0.9rem;">Jeune actif</p>
+                    <div style="display: flex; justify-content: center; margin-top: 15px; color: #ffc107;">
+                        ★★★★☆
+                    </div>
+                </div>
+                <div class="testimonial-card" style="background: #f9f9f9; border-radius: 12px; padding: 30px; height: 100%; transition: all 0.3s ease;">
+                    <div class="box-sm" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; background: rgba(123, 31, 162, 0.1); display: flex; align-items: center; justify-content: center; color: #9b59b6; font-size: 1.5rem;">👩‍👧‍👦</div>
+                    <p class="text-center" style="color: #333; font-style: italic; margin-bottom: 20px; min-height: 80px;">« Je fais des économies tout en préservant la planète. »</p>
+                    <p class="text-center" style="font-weight: 600; color: #1a1a1a; margin: 0;">Sophie, 41 ans</p>
+                    <p class="text-center" style="color: #9b59b6; margin: 5px 0 0; font-size: 0.9rem;">Maman de famille</p>
+                    <div style="display: flex; justify-content: center; margin-top: 15px; color: #ffc107;">
+                        ★★★★★
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="section" style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -150px; left: -50px; width: 300px; height: 300px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+        <div class="container" style="max-width: 800px;">
+            <div class="text-center">
+                <h2 class="mb-4">Prêt à réduire votre gaspillage alimentaire ?</h2>
+                <p class="mb-4">Rejoignez nos bêta-testeurs et bénéficiez d'un accès exclusif !</p>
+                <div style="max-width: 500px; margin: 0 auto;">
+                    <div class="box" style="background: white; padding: 10px; border-radius: 8px;">
+                        <input type="email" placeholder="Votre email" style="width: 60%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-right: 10px;">
+                        <button style="padding: 12px 24px; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer;">M'inscrire</button>
+                    </div>
+                    <p style="font-size: 12px; margin-top: 10px;">En vous inscrivant, vous acceptez notre politique de confidentialité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="grid grid-3">
+                <div>
+                    <h3>KitchenSmart</h3>
+                    <p>Votre partenaire anti-gaspi au quotidien.</p>
+                </div>
+                <div>
+                    <h4>Liens rapides</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="#" style="color: white; text-decoration: none;">À propos</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Fonctionnalités</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>contact@kitchensmart.fr</p>
+                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <span style="width: 30px; height: 30px; background: #34495e; display: inline-block; border-radius: 50%;"></span>
+                        <span style="width: 30px; height: 30px; background: #34495e; display: inline-block; border-radius: 50%;"></span>
+                        <span style="width: 30px; height: 30px; background: #34495e; display: inline-block; border-radius: 50%;"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #34495e; margin-top: 30px; padding-top: 20px; text-align: center; font-size: 14px;">
+                <p>© 2025 KitchenSmart. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
