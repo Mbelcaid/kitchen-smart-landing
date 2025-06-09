@@ -20,7 +20,7 @@ export function ProblemSection() {
       color: 'text-blue-500',
       icon: (
         <div className="text-4xl mb-4">
-          💰
+          💸
         </div>
       )
     },
