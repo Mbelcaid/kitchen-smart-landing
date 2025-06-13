@@ -9,6 +9,13 @@ const nextConfig = {
   // Optimisations de base
   reactStrictMode: true,
   swcMinify: true,
+  // Configuration pour réduire la mise en cache agressive
+  onDemandEntries: {
+    // Période (en ms) pendant laquelle la page est conservée en mémoire
+    maxInactiveAge: 10 * 1000,
+    // Nombre de pages conservées en mémoire
+    pagesBufferLength: 1,
+  },
   compress: true, // Active la compression GZIP/Brotli
   
   // Optimisation des images
